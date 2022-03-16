@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <!--<script src="./index.js"></script>-->
+  </head>
+  <body>
+    <div class="site">
+      <div class="header flexStart">
+        <div class="headerMargin"><a href="html1.html" class="whiteLink twentyFont">Home</a></div>
+      </div>
+      <div class="content">
+
+        <h1>My counter app</h1>
+        <p>Here's the count: <span>0</span></p>
+        <button>Click me</button>
+
+        <!--<script src="./index.js"></script>-->
+      <h1>Urlaub</h1>
+      <h2>Reiseziele in Corona-Zeiten</h2>
+
+      <p>Jeden Tag gibt es neue Coronaregeln, jeden Tag ändert sich die Lage der Einreiseauflagen. Welche
+          Läden darf ich mit 2G betreten, welche mit 3G? Benötige ich eine FFP2-Maske oder reicht eine OP-Maske
+          aus? Es ist sehr schwer geworden, den Überblick – auch in anderen Ländern - zu behalten. Möchte man
+          unter diesen Bedingungen in den Urlaub fahren, wird die Planung schwer. Habe ich alle benötigten
+          Impfungen? Kann ich das Urlaubsland ohne Quarantäne wieder verlassen?
+          Hierbei wollen wir Ihnen helfen! Die Website berücksichtigt Corona-Impfauflagen, aber auch weitere
+          benötigte Impfungen. Haben Sie an Gelbfieber oder Tollwut gedacht? Sie können bei uns das Reiseland
+          auswählen, Ihre aktuellen Impfungen angeben und sich informieren, was das Auswärtige Amt
+          empfiehlt. Auch erhalten Sie einen Hinweislink, mit dem Sie direkt auf die betreffende Seite des
+          Auswärtigen Amtes verbunden werden.</p>
+      <h3>Ziele unserer Webseite:</h3>
+      <ul>
+        <li>Dropdown für Auswahl des Landes</li>
+        <li>Sucheingrenzung mit Checkboxen (Geimpft/Gebustert/Getestet)</li>
+        <li>Link zu jeweiligem Auswärtigen Amt</li>
+        <li><a href="html2.html">Länder, die in unserem Projekt includiert sein sollen</a></li>
+      </ul>
+
+
+      <p style="margin-bottom: 15px">So könnte ein Formular für die Urlaubsland-Suche aussehen...</p>
+      <form class="" action="index.html" method="post">
+        Land:
+        <select class="combo">
+          <option value="Select">Auswählen....</option>
+          <option value="html">England</option>
+          <option value="css">Schweden</option>
+          <option value="css">Norwegen</option>
+          <option value="css">...</option>
+        </select>
+        </br>
+        Vorraussetzungen:
+        <div style="margin-left: 50px">
+          <input type="checkbox" name="getestet" value="">
+          <label for="fa">getestet</label>
+          </br>
+          <input type="checkbox" name="geimft/genesen" value="">
+          <label for="ce">geimft/genesen</label>
+          </br>
+          <input type="checkbox"# name="geboostert" value="">
+          <label for="ce">geboostert</label>
+        </div>
+      </form>
+    </div>
+    <div class="sidebar" style="background-color: darkblue"></div>
+    <div class="footer flex">
+      <div class="sMarginRL"><a href="impressum.html">Impressum</a></div>
+      <div class="sMarginRL"><a href="agbs.html">AGB's</a></div>
+      <div class="sMarginRL"><a href="team.html">Team-Mitglieder</a></div>
+    </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
