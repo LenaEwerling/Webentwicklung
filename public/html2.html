@@ -8,7 +8,7 @@
   </head>
   <body class="site">
     <div class="header flexStart">
-      <div class="headerMargin"><a href="index.html" class="whiteLink twentyFont">Home</a></div>
+      <div class="headerMargin"><a href="loggedin.html" class="whiteLink twentyFont">Home</a></div>
     </div>
     <div class="content">
     <p>Diese Tabelle stellt einige Länder und unsere aktuell geplante Reihenfolge der Implementierung nach drei Wichtigkeitsstufen vor.</p>
@@ -107,7 +107,12 @@
   <label for="textarea">Kommentar</label>
   </br>
   <textarea name="textarea" style="width:70vw;height:100px;"></textarea>
+  </br>
   <input type="submit" value="submit" />
+</form>
+<form method="POST" action="/favs">
+  <ul id="data"></ul>
+  <input type="submit" value="favorisieren" />
 </form>
 <button type="button" name="button" ><a href="html1.html" style="color: white;">zurück zur Startseite</a></button>
 </div>
@@ -117,5 +122,58 @@
   <div class="sMarginRL"><a href="agbs.html">AGB's</a></div>
   <div class="sMarginRL"><a href="team.html">Team-Mitglieder</a></div>
 </div>
+<script>
+const dataElement = document.getElementById("data");
+var user = "";
+var favs;
+fetch("/cookies")
+  .then(function(response) {
+    console.log(response);
+    response.text().then(function (text) {
+      console.log("Response: " + text);
+      user = text;
+      console.log("user: " + text);
+    });
+  })
+  fetch("/favs")
+    .then(function(response) {
+      console.log("favs-response: " + response);
+      response.text().then(function (text) {
+        console.log("Response: " + text);
+        favs = text;
+        console.log("favs: " + text);
+      });
+    })
+  .catch((e) => alert(e));
+  console.log()
+  fetch("/comment")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((element) => {
+        const checkBox = document.createElement("INPUT");
+        checkBox.setAttribute("type", "checkbox");
+        checkBox.setAttribute("id", element.id);
+        checkBox.setAttribute("name", element.id);
+        //for(let i = 0; i < favs.length; i++){
+          //if(favs[i] == element.id){
+            //funktioniert noch nicht...
+            //checkBox.setAttribute("isChecked", "true");
+          //};
+        //};
+        console.log("id: " + element.id);
+        console.log(element);
+        const listElement = document.createElement("li");
+        listElement.textContent = element.comment + " (von: " + element.user + ") favorisiert: ";
+        if(element.user == user){
+          console.log("username = cookieUser!")
+          listElement.style.color = "blue";
+        }
+        console.log(element.comment);
+        listElement.appendChild(checkBox);
+        dataElement.appendChild(listElement);
+      });
+    })
+    .catch((e) => alert(e));
+</script>
   </body>
 </html>

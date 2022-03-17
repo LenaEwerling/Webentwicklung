@@ -1,10 +1,14 @@
-# nginx state for serving content
-FROM nginx:alpine
-# Set working directory to nginx asset directory
-WORKDIR /usr/share/nginx/html
-# Remove default nginx static assets
-RUN rm -rf ./*
-# Copy static assets over
-COPY ./* ./
-# Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+FROM node:12.18.1
+ENV NODE_ENV=production
+
+WORKDIR /app
+
+COPY [ "package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
+
+COPY . .
+
+CMD ["node", "./index.js"]
+
+EXPOSE 8080
